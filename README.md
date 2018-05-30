@@ -120,7 +120,7 @@ When a *.get()* or *.post()* request is called through the AJAX Client, it will 
 
 ## Browser compatibility
 
-I'll level with you - I don't know. It works in the versions of Firefox, Safari and Chrome that I have around. The AJAX Client uses ECMA5 *strict mode*, which is explicitly supported from Internet Explorer 10 at least. But I made sure to only use IE-safe code, and I tried to *shim* what I couldn't rely on older versions of IE to provide, so **theoretically** it should also work just fine in IE9 and even IE8. *I will furthet test compatibility at some point and update this section.*
+I'll level with you - I don't know. It works in the versions of Firefox, Safari and Chrome that I have around. The AJAX Client uses ECMA5 *strict mode*, which is explicitly supported from Internet Explorer 10 at least. But I made sure to only use IE-safe code, and I tried to *shim* what I couldn't rely on older versions of IE to provide, so **theoretically** it should also work just fine in IE9 and even IE8. *I will further test compatibility at some point and update this section.*
 
 -------------------------------------------------------------------------------------------------------
 
