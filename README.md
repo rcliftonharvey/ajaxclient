@@ -1,5 +1,5 @@
 # AJAX Client
-#### Asynchronous AJAX Client
+#### Asynchronous AJAX Client in pure JavaScript
 
 -------------------------------------------------------------------------------------------------------
 
@@ -7,9 +7,10 @@
 
 1. [Introduction](./README.md#introduction)
 2. [How to use](./README.md#how-to-use)
-3. [Example project](./README.md#example-project)
-4. [License](./README.md#license)
-5. [Credits](./README.md#credits)
+3. [Browser compatibility](./README.md#browser-compatibility)
+4. [Example project](./README.md#example-project)
+5. [License](./README.md#license)
+6. [Credits](./README.md#credits)
 
 -------------------------------------------------------------------------------------------------------
 
@@ -22,6 +23,8 @@ This implementation only focuses on **asynchronous transmission**, meaning *the 
 If you want to see what's going on under the hood, have a look into the source of [rchajax.js](./library/rchajax.js), it's thoroughly commented with explanations and examples.
 
 For productive use in a live environment, include the [rchajax.min.js](./library/rchajax.min.js) file in your HTML page to get started.
+
+The AJAX Client was written in pure JavaScript without any dependencies. This means it will play well with third-party JS libraries such as jQuery, but the AJAX Client does **not** require any of them. You can just include this JavaScript into your HTML file and get going.
 
 The original repository for this AJAX Client is right here:<br>
 [https://github.com/rcliftonharvey/ajaxclient]
@@ -112,6 +115,12 @@ ajax.post('url-to-resource?do=' + action + '&on=' + area);
 When a *.get()* or *.post()* request is called through the AJAX Client, it will try to locate and retrieve the resource, and it will fire any events that have event handlers assigned along the way, like the *ajax.on.success()* and *ajax.on.error()* a few examples up.
 
 > The AJAX Client doesn't encrypt or decrypt anything you send or receive through it, nor does it check for or take action against malicious code. You will have to implement your own measures to ensure your application runs safely.
+
+-------------------------------------------------------------------------------------------------------
+
+## Browser compatibility
+
+I'll level with you - I don't know. It works in the versions of Firefox, Safari and Chrome that I have around. The AJAX Client uses ECMA5 *strict mode*, which is explicitly supported from Internet Explorer 10 at least. But I made sure to only use IE-safe code, and I tried to *shim* what I couldn't rely on older versions of IE to provide, so **theoretically** it should also work just fine in IE9 and even IE8. *I will furthet test compatibility at some point and update this section.*
 
 -------------------------------------------------------------------------------------------------------
 
