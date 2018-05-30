@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>RCH AJAX client demo</title>
+	<meta charset="utf-8">
+	
+	<!--  Include the AJAX Client script.  -->
+	<script src="../library/rchajax.js"></script>
+	<style>
+		#result span {color: #777; font-style: italic;}
+		
+		#result span.success {color: #0b0; font-style: normal;}
+		#result span.error   {color: #b00; font-style: normal;}
+	</style>
+</head>
+<body>
+	<script>
+		/* Creates a new client instance that will log everything to the browser's JS console */
+		var ajax = new AJAX.Client(AJAX.DEBUG);
+		
+		/* The resource the AJAX client should retrieve */
+		var ajaxRequestUrl = 'retrieve.txt';
+		
+		/* Example log message */
+		AJAX.Log(AJAX.WARNING, ajax, ' Initialization completed.');
+		
+		/* Assign a callback function that is triggered when the AJAX request completes successfully */
+		ajax.on.success = function success (successEvent)
+		{
+			/* Select the SPAN element that should display the result */
+			var span = document.getElementById('result');
+			
+			/*  Only proceed if it was really found*/
+			if (span)
+			{
+				/* Place a success message into the target SPAN element */
+				span.innerHTML = '<span class="success">' + successEvent.target.responseText + '</span>';
+			}
+		};
+		
+		/* Assign a callback function that is triggered when the AJAX request fails */
+		ajax.on.error = function error (errorEvent)
+		{
+			/* Select the SPAN element that should display the result */
+			var span = document.getElementById('result');
+			
+			/*  Only proceed if it was really found*/
+			if (span)
+			{
+				/* Place a failure message into the target SPAN element */
+				span.innerHTML = 	'<span class="error">failure</span>' + 
+									'<div><br>This can happen if you run this demo on your local machine without an HTTP server.<br>' + 
+									'Try hosting this index.html and the retrieve.txt file on a HTTP server or find a live demo ' +
+									'<a href="http://clifton-harvey.com/code/ajaxclient/">here</a>.</div>';
+			}
+		};
+		
+		/* Assign a callback function that is triggered whenever the AJAX Client changes its internal status */
+		ajax.on.status = function status (statusEvent)
+		{
+			/* Logs a message with level INFO to the console, informing about the latest AJAX Client status */
+			AJAX.Log(AJAX.INFO, ajax, ' ---> Status changed:', [ajax.statusName()]);
+		};
+		
+	</script>
+	
+	<!-- HTML CONTENT -->
+	<h2>RCH AJAX client demo</h2>
+	<p>
+		Click the button to set off the AJAX call.<br>
+		The result will be printed here:
+		<!-- Whatever the AJAX Client returns will be written into here -->
+		<span id="result"><span>click button</span></span>
+	</p>
+	<p>
+		<!-- Assigning onclick function later -->
+		<input id="start" type="button" value="Click me">
+	</p>
+	
+	<script>
+		/* Select the button element */
+		var button = document.getElementById('start');
+		
+		/* Only proceed if it was actually found */
+		if (button)
+		{
+			/* Add the function to execute when the button is clicked */
+			button.addEventListener('click', function(clickEvent)
+			{
+				var span = document.getElementById('result');
+				
+				span.innerHTML = "<i>loading...</i>";
+				
+				/* This sets off the AJAX call. */
+				ajax.get(ajaxRequestUrl);
+				
+			},false);
+		}
+	</script>
+</body>
+</html>
