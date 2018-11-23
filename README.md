@@ -91,7 +91,7 @@ Apart from *success* and *error*, the AJAX Client class can handle all these ev
 * complete
 * status
 
-> For more specific instructions about these events, i.e. when and under which circumstances they are fired, please check the comments in the [rchajax.js](./library/rchajax.js) source.
+> For more specific instructions about these events, i.e. when and under which circumstances they are fired, please check the comments in the [rchajax.js](./library/rchajax.js#L440) source.
 
 Now that the client is instantiated and knows what to do in case of success or error, it's time to actually let it fetch something.
 ```javascript
